@@ -21,7 +21,7 @@ protected:
 
 public:
 	Filter();
-	Image process(Image & inImage, int M, int N);
+	Image process(Image & inImage, int M, int N, int imageHeight, int imageWidth);
 };
 
 #endif

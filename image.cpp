@@ -74,7 +74,7 @@ void Image::readImage(char* filename)
 	infile.open(filename, std::ios::in|std::ios::binary);
 	if(infile.is_open())
 	{
-		infile.read((char*)data, num_rows*num_cols*4);
+		infile.read((char*)data, num_rows*num_cols*8);//multiplied by bit depth
 		infile.close();
 	}
 	else std::cout << "Unable to open " << filename << " for reading \n";
