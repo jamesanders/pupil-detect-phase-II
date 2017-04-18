@@ -24,6 +24,7 @@ float Filter::updatePixel(Image & neighImage, int M, int N) {}
 //and calls the updatePixel function to filter each pixel
 Image Filter::process(Image & inImage, int M, int N)
 {
+	//TODO change imageDimension to be dynamic based on main.cpp file
 	int imageDimension = 256;
 
 	if ( (M%2 == 0) || (N%2 == 0))
@@ -47,9 +48,9 @@ Image Filter::process(Image & inImage, int M, int N)
 	int nOffset = (N+1)/2 - 1;
 
 	//First two loops iterate through each pixel in the original image object
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < imageDimension; i++)
 	{
-		for (int j = 0; j < 256; j++)
+		for (int j = 0; j < imageDimension; j++)
 		{	
 			//If the current pixel is not a border pixel, proceed with filtering
 			if ( !((i==0) || (i==255) || (j==0) || (j==255)) )

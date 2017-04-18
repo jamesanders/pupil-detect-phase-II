@@ -48,7 +48,8 @@ float Image::getVal(int row, int col)
 {
 	if( (row > num_rows) || (col > num_cols) || (row < 0) || (col < 0) )
 	{
-		cout << "Error: Requested pixel is outside image size\n";
+		cout << "Error getVal: Requested pixel is outside image size\n";
+		cout << "row is: " << row << "    col is: " << col << "\n";
 		exit (EXIT_FAILURE);
 	}
 	return data[((row)*num_cols) + col];
@@ -59,7 +60,7 @@ float Image::setVal(int row, int col, float value)
 {
 	if( (row > num_rows) || (col > num_cols) || (row < 0) || (col < 0) )
         {
-                cout << "Error: Requested pixel is outside image size\n";
+                cout << "Error setVal: Requested pixel is outside image size\n";
                 exit (EXIT_FAILURE);
         }
 	data[((row)*num_cols) + col] = value;
