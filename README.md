@@ -1,7 +1,7 @@
 # pupil-detect-phase-II
 
 To run program
-- to run this program, all you have to do is run the makefile script to compile, and then run the output file
+- to run this program, all you have to do is run the makefile script to compile (execute the command: ./makefile), and then run the output file
 - all the make file contains is: "g++ image.cpp filter.cpp sobelfilter.cpp main.cpp"
 - the only stipulation is where the image files are located, they are in a subfolder called "images"
 - so for organization, but all .cpp and .h files in the same directory that you are running the program out of and create a subdirectory called "images" that contains the images to be processed
@@ -29,6 +29,13 @@ filter.h
 - filter.h is the header file for filter.cpp
 
 sobelfilter.cpp
+- this file implements the updatePixel method for processing images with the edge-detecting Sobel filter
+- updatePixel()
+	- convolves the neighborhood of the image with 2 3x3 kernels emphasizing the edges vertically and horizontally
+	- adds the squared sums of these convolutions
+	- takes the magnitude of the square root of the total
+	- compares this value to the threshold value and sets to either 0 or 1
+	- returns the binary pixel value
 
 sobelfilter.h
 - this is the header file for sobelfilter.cpp
