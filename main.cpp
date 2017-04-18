@@ -10,7 +10,7 @@ int main()
 	Image image1(256,256);
         Image newImage(256,256);
 
-        char readFile[] = "./test_images/eye_test_image.jpg";
+        char readFile[] = "./images/lab5_spatial_image.bin";
         char writeFile[] = "./images/outfile.bin";
 
         image1.readImage(readFile);

@@ -29,28 +29,52 @@ float SobelFilter::updatePixel(Image & neighImage, int M, int N)
 	float currentPixel;
 	float updatedPixel;
 
+	float threshold = 100;
+	float floatOne = 1.000;
+	float floatZero = 0.000;
+	float GxSum = 0;
+        float GySum = 0;
+        float mag;
 	int GxKernal[3][3] = {
 				{-1,0,1},
 				{-2,0,2},
 				{-1,0,1}
 			     };
-	float GxSum;
-	float GySum;
-
-
-	//Record value of current pixel being processed
-	currentPixel = neighImage.getVal(middleM,middleN);
-	//Set the current pixel to NULL to allow for easier calculation
-	neighImage.setVal(middleM,middleN,NULL);
+	int GyKernal[3][3] = {
+				{1,2,1},
+				{0,0,0},
+				{-1,-2,-1}
+			     };
 
 	//Determine the sum of the neighbors
 	for (int i = 0; i < M; i++)
 	{
 		for (int j = 0; j < N; j++)
 		{
-			sum = sum + neighImage.getVal(i,j);
+			GxSum += GxKernal[i][j]*neighImage.getVal(i,j);
+			GySum += GyKernal[i][j]*neighImage.getVal(i,j);
 		}
 	}
+	mag = abs(sqrt(pow(GxSum,2) + pow(GySum,2)));
+	cout << "mag = " << mag << "\n";
+
+
+	if (mag > threshold)
+	{
+		cout << "1\n";
+		return floatOne;
+	}
+	else
+	{
+		cout << "0\n";
+		return floatZero;
+	}
+
+
+
+
+
+
 
 	//Calculate the mean of neighbors
 	mean = sum/totalNeighbors;

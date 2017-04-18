@@ -67,8 +67,7 @@ Image Filter::process(Image & inImage, int M, int N)
 				//Set the new value of the current pixel to the output image
 				imageCopy.setVal(i,j,updatePixel(tempIm,M,N));
 
-				//cout << "";
-				cout << "";
+				cout << "new pixel value:" << imageCopy.getVal(i,j);
 			}
 		}
 	}
